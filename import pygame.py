@@ -19,7 +19,6 @@ while running:
 
     
     tela.fill("black")
-
     # RENDER YOUR GAME HERE
 
    
