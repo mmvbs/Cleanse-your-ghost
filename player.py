@@ -1,19 +1,23 @@
 import pygame
+import os
 
+class Player:
+    def __init__(self, largura, altura, tela):
+        self.largura = largura
+        self.altura = altura
+        self.tela = tela
+        self.x_player = 50
+        self.y_player = 50
+        self.velocidade = 5
+        self.aceleracao_gravidade = 1
 
-sprite_path = os.path.join(os.path.dirname(__file__), "ocultie1.png")
-bloco_sprite_right = pygame.image.load(sprite_path)
-bloco_sprite_right = pygame.transform.scale(bloco_sprite_right, (78, 138))
-bloco_sprite_left = pygame.transform.flip(bloco_sprite_right, True, False)
-bloco_sprite_down = pygame.image.load(os.path.join(os.path.dirname(__file__), "ocultiedown.png"))
-bloco_sprite_down = pygame.transform.scale(bloco_sprite_down, (78, 138))
-bloco_sprite_down_left = pygame.transform.flip(bloco_sprite_down, True, False)
+    def load_images(self):
+        sprite_path = os.path.join(os.path.dirname(__file__), "ocultie1.png")
+        self.player_image = pygame.image.load(sprite_path)
+        self.player_image = pygame.transform.scale(self.player_image, (78, 138))
+        player_down_path = os.path.join(os.path.dirname(__file__), "ocultiedown.png")
+        self.player_down_image = pygame.image.load(player_down_path)
+        self.player_down_image = pygame.transform.scale(self.player_down_image, (78, 138))
 
-# Posição inicial do bloco
-x_player = largura // 2 - bloco_sprite_right.get_width() // 2
-y_player = y_chao - bloco_sprite_right.get_height() - 10
-
-#velocidades
-velocidade = 5
-aceleracao_gravidade = 1
-ultima_tecla= pygame.K_RIGHT    
+    def draw(self):
+        self.tela.blit(self.player_image, (self.x_player, self.y_player))
