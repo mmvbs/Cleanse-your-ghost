@@ -7,7 +7,7 @@ class Player:
         self.altura = altura
         self.tela = tela
         self.x_player = 50
-        self.y_player = 50
+        self.y_player = 500
         self.velocidade = 5
         self.aceleracao_gravidade = 1
 
