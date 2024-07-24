@@ -2,6 +2,7 @@ import pygame
 import sys
 import os
 import classes.player as pl
+import classes.mundo as mu
 
 pygame.init()
 
@@ -12,9 +13,12 @@ altura = 720
 tela = pygame.display.set_mode((largura, altura))
 pygame.display.set_caption("Cleanse your Ghost")
 
-# Instancia o jogador
+# Instancias
 jogador = pl.Player(largura, altura, tela)
 jogador.load_images()
+mundo = mu.Mundo(largura, altura, tela)
+mundo.load_images()
+
 
 # Loop principal do jogo
 running = True
@@ -28,10 +32,11 @@ while running:
 
 
     # Preenche a tela
-    tela.fill("black")
+    tela.fill("white")
 
-    # Desenha o jogador
+    # Desenha
     jogador.draw()
+    mundo.chaodraw()
 
 
     # Atualiza a tela
