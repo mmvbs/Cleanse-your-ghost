@@ -1,7 +1,7 @@
 import pygame
 import sys
 import os
-import player as pl
+import classes.player as pl
 
 pygame.init()
 
