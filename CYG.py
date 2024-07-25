@@ -32,11 +32,12 @@ while running:
 
 
     # Preenche a tela
-    tela.fill("white")
+    tela.fill("black")
 
     # Desenha
-    jogador.draw()
     mundo.chaodraw()
+    jogador.draw()
+    jogador.run()
 
 
     # Atualiza a tela
