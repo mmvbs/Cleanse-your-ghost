@@ -11,13 +11,13 @@ class Player:
         self.largura = largura
         self.altura = altura
         self.tela = tela
-        self.x_player = 50
-        self.y_player = 485
+        self.x_player = 40
+        self.y_player = 235
         self.velocidade = 5
         self.aceleracao_gravidade = 1
 
         
-        self.tamanho_imagem = (120, 140)
+        self.tamanho_imagem = (384, 384)
 
         self.correndo = [
             carregar_imagem(os.path.join('texturas', 'correr1.png'), self.tamanho_imagem),
@@ -25,7 +25,15 @@ class Player:
             carregar_imagem(os.path.join('texturas', 'correr3.png'), self.tamanho_imagem),
             carregar_imagem(os.path.join('texturas', 'correr4.png'), self.tamanho_imagem),
         ]
+        self.atacando = [
+            carregar_imagem(os.path.join('texturas', 'ataque1.png'), self.tamanho_imagem),
+            carregar_imagem(os.path.join('texturas', 'ataque2.png'), self.tamanho_imagem),
+            carregar_imagem(os.path.join('texturas', 'ataque3.png'), self.tamanho_imagem),
+            carregar_imagem(os.path.join('texturas', 'ataque4.png'), self.tamanho_imagem),
+        ]
         self.step_index = 0
+        self.ataque_index = 0
+        self.image = self.atacando[0]
         self.image = self.correndo[0]  
     def load_images(self):
         base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'texturas'))
@@ -36,6 +44,10 @@ class Player:
 
     def draw(self):
         self.tela.blit(self.image, (self.x_player, self.y_player))
+
+    def ataque(self):
+        self.image = self.atacando[self.ataque_index// 5]
+        self.ataque_index =(self.ataque_index + 1) % (len(self.atacando) *5)
 
     def run(self):
         # Atualiza o frame da animação de corrida
