@@ -39,6 +39,9 @@ while running:
     jogador.draw()
     jogador.run()
 
+    if pygame.key.get_pressed()[pygame.K_j]:
+        jogador.ataque()
+
 
     # Atualiza a tela
     pygame.display.update()
