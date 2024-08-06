@@ -25,7 +25,7 @@ running = True
 clock = pygame.time.Clock()
 
 while running:
-    tela.fill((0,0,0))
+    #tela.fill((0,0,0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -33,6 +33,7 @@ while running:
 
     # Preenche a tela
     tela.fill("black")
+    mundo.update()
 
     # Desenha
     mundo.chaodraw()
