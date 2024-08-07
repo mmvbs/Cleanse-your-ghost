@@ -47,7 +47,9 @@ while running:
     if pygame.key.get_pressed()[pygame.K_j]:
         jogador.ataque()
 
-
+    if pygame.key.get_pressed()[pygame.K_SPACE]:
+        jogador.jump()
+    
     # Atualiza a tela
     pygame.display.update()
 

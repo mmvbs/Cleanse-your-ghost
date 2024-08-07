@@ -17,7 +17,14 @@ class Player:
         self.velocidade = 5
         self.aceleracao_gravidade = 1
 
-        
+        # P/Pulo
+        self.AlturaPulo = -25#Tamanho do pulo
+        self.tempopulo = 0
+        self.pulando = False
+        self.velocidade_pulo = self.AlturaPulo
+        self.gravity = 1
+        self.tempo_pulo = self.tempopulo
+
         self.tamanho_imagem = (384, 384)
 
         self.correndo = [
@@ -57,3 +64,26 @@ class Player:
         # Atualiza o frame da animação de corrida
         self.image = self.correndo[self.step_index // 5]
         self.step_index = (self.step_index + 1) % (len(self.correndo) * 5)  # Mantém o índice dentro dos limites
+        
+        #Atualiza Fisica do Pulo
+        self.atualizar()
+
+    def jump(self):
+        #Faz o personagem pular
+        if not self.pulando:
+            self.pulando =True
+            self.tempo_pulo = self.tempopulo
+    
+    def atualizar(self):
+        # Atualiza a física do pulo
+        if self.pulando:
+            self.y_player += self.velocidade_pulo
+            self.tempo_pulo += 1
+            self.velocidade_pulo += self.gravity
+
+            # Verifica se o pulo terminou (se o jogador voltou ao chão)
+            if self.y_player >= 235:
+                self.y_player = 235
+                self.pulando = False
+                self.velocidade_pulo = self.AlturaPulo
+                self.tempo_pulo = self.tempopulo
