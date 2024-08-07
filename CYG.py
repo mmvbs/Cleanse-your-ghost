@@ -1,10 +1,12 @@
 import pygame
 import sys
 import os
+import random
 import classes.player as pl
 import classes.mundo as mu
+import classes.nuvem as nu
 
-pygame.init()
+pygame.init() 
 
 # Configura a tela
 largura = 1280
@@ -18,7 +20,8 @@ jogador = pl.Player(largura, altura, tela)
 jogador.load_images()
 mundo = mu.Mundo(largura, altura, tela)
 mundo.load_images()
-
+nuvem = nu.Nuvem(largura, altura, tela)
+nuvem.load_images()
 
 # Loop principal do jogo
 running = True
@@ -33,9 +36,11 @@ while running:
     # Preenche a tela
     tela.fill("black")
     mundo.update()
+    nuvem.update()
 
     # Desenha
     mundo.draw()
+    nuvem.draw()
     jogador.draw()
     jogador.run()
 
