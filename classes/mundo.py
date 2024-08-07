@@ -14,9 +14,7 @@ class Mundo:
         self.stone1_x = 640  # Posição inicial do obstáculo
 
         # Velocidade de movimento
-        self.velocidade = 7
-
-        self.load_images()
+        self.velocidade = 12
 
     def load_images(self):
         base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'texturas'))

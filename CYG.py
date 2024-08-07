@@ -25,7 +25,6 @@ running = True
 clock = pygame.time.Clock()
 
 while running:
-    #tela.fill((0,0,0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
@@ -48,6 +47,6 @@ while running:
     pygame.display.update()
 
     # Controla a taxa de frames por segundo
-    clock.tick(60)  # Limita a FPS a 60
+    clock.tick(60) 
 
 pygame.quit()

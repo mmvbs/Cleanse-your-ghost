@@ -1,5 +1,6 @@
 import pygame
 import os
+#import time
 
 
 
@@ -34,7 +35,8 @@ class Player:
         self.step_index = 0
         self.ataque_index = 0
         self.image = self.atacando[0]
-        self.image = self.correndo[0]  
+        self.image = self.correndo[0]
+        
     def load_images(self):
         base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'texturas'))
         sprite_path = os.path.join(base_path, "ocultie1.png")
@@ -46,8 +48,10 @@ class Player:
         self.tela.blit(self.image, (self.x_player, self.y_player))
 
     def ataque(self):
-        self.image = self.atacando[self.ataque_index// 5]
-        self.ataque_index =(self.ataque_index + 1) % (len(self.atacando) *5)
+            self.image = self.atacando[self.ataque_index]
+            self.ataque_index += 1
+            if self.ataque_index >= len(self.atacando):
+                self.ataque_index = 0
 
     def run(self):
         # Atualiza o frame da animação de corrida
