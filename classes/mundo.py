@@ -27,16 +27,13 @@ class Mundo:
         self.bglua = pygame.image.load(sprite_path)
         self.bglua = pygame.transform.scale(self.bglua, (1280, 720))
       
-        sprite_path = os.path.join(base_path, "stone-1.png")
-        self.stone1 = pygame.image.load(sprite_path)
-        self.stone1 = pygame.transform.scale(self.stone1, (100, 140))
+      
         
     
     def draw(self):
         self.tela.blit(self.bglua, (0, 0))
         self.tela.blit(self.bg, (self.bg_x, 200))
         self.tela.blit(self.bg, (self.bg_x + self.bg.get_width(),200))#Repete o fundo para evitar as lacunas pretas
-        self.tela.blit(self.stone1, (self.stone1_x, 500))
 
     #Função para movimentação do mundo
     def update(self):
@@ -47,11 +44,3 @@ class Mundo:
         if self.bg_x <= -self.bg.get_width():
             self.bg_x = 0
         
-        # Se o chão saiu da tela, reposicione-o
-
-        # Move o obstáculo para a esquerda
-        self.stone1_x -= self.velocidade
-
-        # Se o obstáculo saiu da tela, reposicione-o
-        if self.stone1_x <= -self.stone1.get_width():
-            self.stone1_x = self.largura
