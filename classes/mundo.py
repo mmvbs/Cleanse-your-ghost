@@ -5,7 +5,7 @@ class Mundo:
     def __init__(self, largura, altura, tela):
         self.largura = largura
         self.altura = altura
-        self.chao = 100
+        self.chao = None
         self.tela = tela
 
          # Posições iniciais
@@ -20,17 +20,22 @@ class Mundo:
         base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'texturas'))
         sprite_path = os.path.join(base_path, "chao.png")
         self.chao = pygame.image.load(sprite_path)
-
+        #fundo
         sprite_path = os.path.join(base_path, "bg.png")
         self.bg = pygame.image.load(sprite_path)
         self.bg = pygame.transform.scale(self.bg, (1280, 500))
-
+        #lua
+        sprite_path = os.path.join(base_path, "bg-moon.png")
+        self.bglua = pygame.image.load(sprite_path)
+        self.bglua = pygame.transform.scale(self.bglua, (1280, 720))
+      
         sprite_path = os.path.join(base_path, "stone-1.png")
         self.stone1 = pygame.image.load(sprite_path)
         self.stone1 = pygame.transform.scale(self.stone1, (100, 140))
         
     
-    def chaodraw(self):
+    def draw(self):
+        self.tela.blit(self.bglua, (0, 0))
         self.tela.blit(self.bg, (self.bg_x, 200))
         self.tela.blit(self.bg, (self.bg_x + self.bg.get_width(),200))#Repete o fundo para evitar as lacunas pretas
         self.tela.blit(self.chao, (self.chao_x, 620))

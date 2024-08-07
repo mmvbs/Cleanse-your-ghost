@@ -35,7 +35,7 @@ while running:
     mundo.update()
 
     # Desenha
-    mundo.chaodraw()
+    mundo.draw()
     jogador.draw()
     jogador.run()
 
