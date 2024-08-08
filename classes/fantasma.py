@@ -14,6 +14,7 @@ class Fantasma:
         self.y_Fantasma = 530
         self.aceleracao_gravidade = 1
         self.tamanho_imagem = (135, 87)
+        self.velocidade = 0.5
         self.rect = pygame.Rect(self.x_Fantasma, 530, 70, 87)
         
         
@@ -42,7 +43,7 @@ class Fantasma:
         # Atualiza a animação
         self.step_index = (self.step_index + 1) % (len(self.imagens) * 5)
         self.image = self.imagens[self.step_index // 5]
-        self.x_Fantasma -= 0.5
+        self.x_Fantasma -= self.velocidade
         self.rect.topleft = (self.x_Fantasma+50, 530)
 
   

@@ -29,4 +29,4 @@ class Nuvem:
         self.x_pos -= self.velocidade
         if self.x_pos <= -self.nuvem.get_width():
             self.x_pos = self.largura  # Reposiciona a nuvem à direita da tela
-            self.y_pos = random.randint(9,10)*10
+            self.y_pos = random.randint(7,10)*10
