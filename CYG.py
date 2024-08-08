@@ -82,7 +82,7 @@ while running:
         moita.velocidade = 0
         nuvem.velocidade = 0
         fantasma.velocidade = 0
-        tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Precione r para re-iniciar", True, (255, 0, 0)), ((largura/2)-300, altura/4))
+        tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Game Over", True, (255, 0, 0)), ((largura/2)-200, altura/2))
         execucacao = False
 
         if pygame.key.get_pressed()[pygame.K_r]:

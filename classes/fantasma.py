@@ -10,7 +10,7 @@ class Fantasma:
         self.largura = largura
         self.altura = altura
         self.tela = tela
-        self.x_Fantasma = 1000
+        self.x_Fantasma = 300
         self.y_Fantasma = 530
         self.aceleracao_gravidade = 1
         self.tamanho_imagem = (135, 87)
