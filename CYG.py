@@ -7,6 +7,7 @@ import classes.mundo as mu
 import classes.nuvem as nu
 import classes.tumulos as tu
 import classes.fantasma as fa
+import classes.moita as mo
 
 pygame.init() 
 
@@ -26,6 +27,8 @@ nuvem = nu.Nuvem(largura, altura, tela)
 nuvem.load_images()
 tumulo = tu.Tumulos(largura, altura, tela)
 tumulo.load_images()
+moita = mo.Moita(largura, altura, tela)
+moita.load_images()
 fantasma = fa.Fantasma(largura, altura, tela)
 
 #fantasma.load_images()
@@ -39,6 +42,8 @@ def iniciar():
     nuvem.load_images()
     tumulo = tu.Tumulos(largura, altura, tela)
     tumulo.load_images()
+    moita = mo.Moita(largura, altura, tela)
+    moita.load_images()
     fantasma = fa.Fantasma(largura, altura, tela)
 # Loop principal do jogo
 running = True
@@ -52,12 +57,14 @@ while running:
     tela.fill("black")
     mundo.update()
     tumulo.update()
+    moita.update()
     nuvem.update()
     fantasma.update()
         # Desenha
     mundo.draw()
     fantasma.draw()
     tumulo.draw()
+    moita.draw()
     nuvem.draw()
     jogador.draw()
     jogador.run()
@@ -67,6 +74,7 @@ while running:
         tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você capturou o fantasma", True, (0, 255, 0)), ((largura/2)-200, altura/2)) 
         mundo.velocidade = 0
         tumulo.velocidade = 0
+        moita.velocidade = 0
         nuvem.velocidade = 0
         fantasma.velocidade = 0
         tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Precione r para re-iniciar", True, (255, 0, 0)), ((largura/2)-300, altura/4))
@@ -86,6 +94,7 @@ while running:
          #  tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você perdeu", True, (255, 0, 0)), ((largura/2)-200, altura/2))
         mundo.velocidade = 0
         tumulo.velocidade = 0
+        moita.velocidade = 0
         nuvem.velocidade = 0
         fantasma.velocidade = 0
         tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Precione r para re-iniciar", True, (255, 0, 0)), ((largura/2)-300, altura/4))
@@ -93,8 +102,10 @@ while running:
 
         if pygame.key.get_pressed()[pygame.K_r]:
             tumulo.stone1_x = 900
+            moita.bushLarge_x = 400
             mundo.velocidade = 12
             tumulo.velocidade = 12
+            moita.velocidade = 12
             nuvem.velocidade = 3
             jogador.rect.x = 100
             jogador.rect.y = 500

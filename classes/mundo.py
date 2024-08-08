@@ -12,6 +12,7 @@ class Mundo:
         self.chao_x = 0
         self.bg_x = 0
         self.stone1_x = 640  # Posição inicial do obstáculo
+        self.bushLarge_x = 700
 
         # Velocidade de movimento
         self.velocidade = 12
