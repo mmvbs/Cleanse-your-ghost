@@ -6,7 +6,7 @@ def carregar_imagem(path, tamanho):
     return pygame.transform.scale(image, tamanho)
 
 class Player:
-    def __init__(self, largura, altura, tela):
+    def _init_(self, largura, altura, tela):
         self.largura = largura
         self.altura = altura
         self.tela = tela
@@ -52,7 +52,7 @@ class Player:
         self.barra_largura = self.tamanho_imagem[0] / 5  # Tamanho da barra de cooldown
 
     def load_images(self):
-        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'texturas'))
+        base_path = os.path.abspath(os.path.join(os.path.dirname(_file_), '..', 'texturas'))
         sprite_path = os.path.join(base_path, "ocultie1.png")
         self.player_image = carregar_imagem(sprite_path, self.tamanho_imagem)
         player_down_path = os.path.join(base_path, "ocultiedown.png")
