@@ -6,7 +6,7 @@ def carregar_imagem(path, tamanho):
     return pygame.transform.scale(image, tamanho)
 
 class Player:
-    def _init_(self, largura, altura, tela):
+    def __init__(self, largura, altura, tela):
         self.largura = largura
         self.altura = altura
         self.tela = tela
@@ -25,6 +25,7 @@ class Player:
 
         self.tamanho_imagem = (384, 384)
         self.rect = pygame.Rect(self.x_player +150, 470, 80, 150)
+        self.ataquerect = pygame.Rect(self.x_player +150, 700, 200, 150)
 
         self.correndo = [
             carregar_imagem(os.path.join('texturas', 'correr1.png'), self.tamanho_imagem),
@@ -52,7 +53,7 @@ class Player:
         self.barra_largura = self.tamanho_imagem[0] / 5  # Tamanho da barra de cooldown
 
     def load_images(self):
-        base_path = os.path.abspath(os.path.join(os.path.dirname(_file_), '..', 'texturas'))
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'texturas'))
         sprite_path = os.path.join(base_path, "ocultie1.png")
         self.player_image = carregar_imagem(sprite_path, self.tamanho_imagem)
         player_down_path = os.path.join(base_path, "ocultiedown.png")
@@ -65,11 +66,14 @@ class Player:
             self.image = self.atacando[self.ataque_index]
             self.ataque_index += 1
             self.ataque_count += 1
+            self.ataquerect = pygame.Rect(self.x_player +150, 470, 200, 150)
 
             if self.ataque_index >= len(self.atacando):
                 self.ataque_index = 0
+                self.ataquerect = pygame.Rect(self.x_player +150, 700, 200, 150)
 
             if self.ataque_count >= 4:
+                self.ataquerect = pygame.Rect(self.x_player +150, 700, 200, 150)
                 self.ultimo_ataque = tempo_atual
                 self.ataque_count = 0
 
@@ -122,3 +126,5 @@ class Player:
 
     def checar_colisao(self, objeto):
         return self.rect.colliderect(objeto.rect)
+    def checar_colisaoataque(self, objeto):
+        return self.ataquerect.colliderect(objeto.rect)

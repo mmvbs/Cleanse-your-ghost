@@ -69,7 +69,9 @@ while running:
     jogador.draw()
     jogador.run()
     
-     
+    if jogador.checar_colisaoataque(moita):
+        moita.bushLarge_x = 1290
+        jogador.ataquerect = pygame.Rect(jogador.x_player +150, 700, 200, 150)
     if jogador.checar_colisao(fantasma):
         tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você capturou o fantasma", True, (0, 255, 0)), ((largura/2)-200, altura/2)) 
         mundo.velocidade = 0
@@ -112,9 +114,11 @@ while running:
             execucacao = True
             iniciar()
     
-    # pygame.draw.rect(tela, (255, 0, 0), jogador.rect, 2)
-    # pygame.draw.rect(tela, (255, 0, 0), tumulo.rect, 2) 
-    # pygame.draw.rect(tela, (255, 0, 0), fantasma.rect, 2)
+    #pygame.draw.rect(tela, (255, 0, 0), jogador.rect, 2)
+    #pygame.draw.rect(tela, (255, 0, 0), tumulo.rect, 2) 
+    #pygame.draw.rect(tela, (255, 0, 0), fantasma.rect, 2)
+    #pygame.draw.rect(tela, (255, 0, 0), moita.rect, 2)
+    #pygame.draw.rect(tela, (255, 0, 0), jogador.ataquerect, 2)
     
 
     if pygame.key.get_pressed()[pygame.K_j]:
