@@ -24,6 +24,7 @@ class Player:
         self.tempo_pulo = self.tempopulo
 
         self.tamanho_imagem = (384, 384)
+        self.rect = pygame.Rect(self.x_player +150, 470, 80, 150)
 
         self.correndo = [
             carregar_imagem(os.path.join('texturas', 'correr1.png'), self.tamanho_imagem),
@@ -90,12 +91,14 @@ class Player:
         # Atualiza a física do pulo
         if self.pulando:
             self.y_player += self.velocidade_pulo
+            self.rect.y += self.velocidade_pulo
             self.tempo_pulo += 1
             self.velocidade_pulo += self.gravity
 
             # Verifica se o pulo terminou (se o jogador voltou ao chão)
             if self.y_player >= 235:
                 self.y_player = 235
+                self.rect.y = 470
                 self.pulando = False
                 self.velocidade_pulo = self.AlturaPulo
                 self.tempo_pulo = self.tempopulo
@@ -116,3 +119,6 @@ class Player:
 
         # Desenha a barra de cooldown
         pygame.draw.rect(self.tela, self.barra_cor, (self.x_player * 5, self.y_player - (-200), barra_largura, self.barra_altura))
+
+    def checar_colisao(self, objeto):
+        return self.rect.colliderect(objeto.rect)

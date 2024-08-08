@@ -45,6 +45,7 @@ while running:
     nuvem.update()
     fantasma.update()
 
+
     # Desenha
     mundo.draw()
     fantasma.draw()
@@ -52,12 +53,24 @@ while running:
     nuvem.draw()
     jogador.draw()
     jogador.run()
+     
+    if jogador.checar_colisao(fantasma):
+        tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você perdeu", True, (255, 0, 0)), ((largura/2)-200, altura/2))
+        running = False
+    if jogador.checar_colisao(tumulo):
+        tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você perdeu", True, (255, 0, 0)), ((largura/2)-200, altura/2))
+        pygame.time.delay(500)
+    #pygame.draw.rect(tela, (255, 0, 0), jogador.rect, 2)
+    #pygame.draw.rect(tela, (255, 0, 0), tumulo.rect, 2) 
+    #pygame.draw.rect(tela, (255, 0, 0), fantasma.rect, 2)
 
     if pygame.key.get_pressed()[pygame.K_j]:
         jogador.ataque()
 
     if pygame.key.get_pressed()[pygame.K_SPACE]:
         jogador.jump()
+
+    
     
     # Atualiza a tela
     pygame.display.update()

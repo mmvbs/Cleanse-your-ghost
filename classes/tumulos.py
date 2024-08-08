@@ -7,7 +7,9 @@ class Tumulos:
         self.altura = altura
         self.tela = tela
         self.velocidade = 12
-        self.stone1_x = 640
+        self.stone1_x = 900
+        self.stone1_y = 480
+        self.rect = pygame.Rect(self.stone1_x, 500, 90, 100)
 
        
 
@@ -25,3 +27,4 @@ class Tumulos:
         self.stone1_x -= self.velocidade
         if self.stone1_x <= -self.stone1.get_width():
             self.stone1_x = self.largura
+        self.rect.topleft = (self.stone1_x, 500)
