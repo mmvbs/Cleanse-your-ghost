@@ -10,7 +10,7 @@ class Fantasma:
         self.largura = largura
         self.altura = altura
         self.tela = tela
-        self.x_Fantasma = 40
+        self.x_Fantasma = 500
         self.y_Fantasma = 500
         self.velocidade = 3
         self.aceleracao_gravidade = 1
@@ -39,12 +39,8 @@ class Fantasma:
         self.tela.blit(self.image, (self.x_Fantasma, self.y_Fantasma))
 
     def update(self):
-      
-        self.step_index = (self.step_index + 1) % (len(self.imagens) * 10)  
-        self.image = self.imagens[self.step_index // 10] 
-
-        self.x_Fantasma += self.velocidade
-        if self.x_Fantasma > self.largura:  
-            self.x_Fantasma = -self.tamanho_imagem[0]
+        # Atualiza a animação
+        self.step_index = (self.step_index + 1) % (len(self.imagens) * 10)
+        self.image = self.imagens[self.step_index // 10]
 
   

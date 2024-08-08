@@ -27,7 +27,7 @@ nuvem.load_images()
 tumulo = tu.Tumulos(largura, altura, tela)
 tumulo.load_images()
 fantasma = fa.Fantasma(largura, altura, tela)
-fantasma.load_images()
+#fantasma.load_images()
 # Loop principal do jogo
 running = True
 clock = pygame.time.Clock()
@@ -47,8 +47,8 @@ while running:
 
     # Desenha
     mundo.draw()
-    tumulo.draw()
     fantasma.draw()
+    tumulo.draw()
     nuvem.draw()
     jogador.draw()
     jogador.run()
