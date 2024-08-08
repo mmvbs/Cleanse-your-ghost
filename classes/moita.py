@@ -8,7 +8,7 @@ class Moita:
         self.tela = tela
         self.velocidade = 12
         self.bushLarge_x = 400
-        self.bushLarge_y = 480
+        self.bushLarge_y = 500
         self.rect = pygame.Rect(self.bushLarge_x, 500, 90, 100)
 
        
@@ -17,12 +17,12 @@ class Moita:
         base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'texturas'))
         sprite_path = os.path.join(base_path, "bush-large.png")
         self.bushLarge = pygame.image.load(sprite_path)
-        self.bushLarge = pygame.transform.scale(self.bushLarge, (100, 140))
+        self.bushLarge = pygame.transform.scale(self.bushLarge, (152, 130))
         self.image = self.bushLarge
         self.image_rect = self.image.get_rect()
         
     def draw(self):
-         self.tela.blit(self.bushLarge, (self.bushLarge_x, 480))
+         self.tela.blit(self.bushLarge, (self.bushLarge_x, 500))
     def update(self):
         self.bushLarge_x -= self.velocidade
         if self.bushLarge_x <= -self.bushLarge.get_width():

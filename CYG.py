@@ -33,7 +33,7 @@ fantasma = fa.Fantasma(largura, altura, tela)
 
 #fantasma.load_images()
 def iniciar():
-    global jogador, tumulo, fantasma, mundo, nuvem
+    global jogador, tumulo, fantasma, mundo, nuvem, moita
     jogador = pl.Player(largura, altura, tela)
     jogador.load_images()
     mundo = mu.Mundo(largura, altura, tela)
@@ -72,6 +72,9 @@ while running:
     if jogador.checar_colisaoataque(moita):
         moita.bushLarge_x = 1290
         jogador.ataquerect = pygame.Rect(jogador.x_player +150, 700, 200, 150)
+        fantasma.velocidade = 3
+    if jogador.checar_colisao(moita):
+        fantasma.velocidade = 0.5
     if jogador.checar_colisao(fantasma):
         tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você capturou o fantasma", True, (0, 255, 0)), ((largura/2)-200, altura/2)) 
         mundo.velocidade = 0
@@ -93,7 +96,6 @@ while running:
             iniciar()
 
     if jogador.checar_colisao(tumulo):
-         #  tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você perdeu", True, (255, 0, 0)), ((largura/2)-200, altura/2))
         mundo.velocidade = 0
         tumulo.velocidade = 0
         moita.velocidade = 0
