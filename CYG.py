@@ -6,6 +6,7 @@ import classes.player as pl
 import classes.mundo as mu
 import classes.nuvem as nu
 import classes.tumulos as tu
+import classes.fantasma as fa
 
 pygame.init() 
 
@@ -25,7 +26,8 @@ nuvem = nu.Nuvem(largura, altura, tela)
 nuvem.load_images()
 tumulo = tu.Tumulos(largura, altura, tela)
 tumulo.load_images()
-
+fantasma = fa.Fantasma(largura, altura, tela)
+fantasma.load_images()
 # Loop principal do jogo
 running = True
 clock = pygame.time.Clock()
@@ -41,10 +43,12 @@ while running:
     mundo.update()
     tumulo.update()
     nuvem.update()
+    fantasma.update()
 
     # Desenha
     mundo.draw()
     tumulo.draw()
+    fantasma.draw()
     nuvem.draw()
     jogador.draw()
     jogador.run()
