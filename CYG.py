@@ -64,17 +64,33 @@ while running:
     
      
     if jogador.checar_colisao(fantasma):
-        tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você perdeu", True, (255, 0, 0)), ((largura/2)-200, altura/2))
-        running = False
-    if jogador.checar_colisao(tumulo):
-        #tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você perdeu", True, (255, 0, 0)), ((largura/2)-200, altura/2))
-        
+        tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você capturou o fantasma", True, (0, 255, 0)), ((largura/2)-200, altura/2)) 
         mundo.velocidade = 0
         tumulo.velocidade = 0
         nuvem.velocidade = 0
         fantasma.velocidade = 0
         tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Precione r para re-iniciar", True, (255, 0, 0)), ((largura/2)-300, altura/4))
         execucacao = False
+
+        if pygame.key.get_pressed()[pygame.K_r]:
+            fantasma.x_Fantasma = 1000
+            mundo.velocidade = 12
+            fantasma.velocidade = 0.5
+            nuvem.velocidade = 3
+            jogador.rect.x = 100
+            jogador.rect.y = 500
+            execucacao = True
+            iniciar()
+
+    if jogador.checar_colisao(tumulo):
+         #  tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Você perdeu", True, (255, 0, 0)), ((largura/2)-200, altura/2))
+        mundo.velocidade = 0
+        tumulo.velocidade = 0
+        nuvem.velocidade = 0
+        fantasma.velocidade = 0
+        tela.blit(pygame.font.Font.render(pygame.font.Font(None, 64), "Precione r para re-iniciar", True, (255, 0, 0)), ((largura/2)-300, altura/4))
+        execucacao = False
+
         if pygame.key.get_pressed()[pygame.K_r]:
             tumulo.stone1_x = 900
             mundo.velocidade = 12
