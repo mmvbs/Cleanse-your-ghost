@@ -8,10 +8,10 @@ class Nuvem:
         self.largura = largura
         self.altura = altura
         self.tela = tela
-        self.x_size = 288
-        self.y_size = 224
+        self.x_size = 630
+        self.y_size = 100
         self.x_pos = largura
-        self.y_pos = 100
+        self.y_pos = 30
         self.velocidade = 3  # Velocidade das nuvens
         
         
@@ -29,4 +29,4 @@ class Nuvem:
         self.x_pos -= self.velocidade
         if self.x_pos <= -self.nuvem.get_width():
             self.x_pos = self.largura  # Reposiciona a nuvem à direita da tela
-            self.y_pos = random.randint(7,10)*10
+            self.y_pos = random.randint(8,10)*9
