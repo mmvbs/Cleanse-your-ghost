@@ -1,3 +1,4 @@
+from classes.entidade import Entidade
 import pygame
 import os
 
@@ -5,15 +6,9 @@ def carregar_imagem(path, tamanho):
     image = pygame.image.load(path)
     return pygame.transform.scale(image, tamanho)
 
-class Player:
+class Player(Entidade):
     def __init__(self, largura, altura, tela):
-        self.largura = largura
-        self.altura = altura
-        self.tela = tela
-        self.x_player = 40
-        self.y_player = 235
-        self.velocidade = 5
-        self.aceleracao_gravidade = 1
+        super().__init__(largura, altura, tela, 40, 235, 5, 1)
 
         # P/Pulo
         self.AlturaPulo = -25  # Tamanho do pulo
@@ -24,8 +19,8 @@ class Player:
         self.tempo_pulo = self.tempopulo
 
         self.tamanho_imagem = (384, 384)
-        self.rect = pygame.Rect(self.x_player +150, 470, 80, 150)
-        self.ataquerect = pygame.Rect(self.x_player +150, 700, 200, 150)
+        self.rect = pygame.Rect(self.x +150, 470, 80, 150)
+        self.ataquerect = pygame.Rect(self.x +150, 700, 200, 150)
 
         self.correndo = [
             carregar_imagem(os.path.join('texturas', 'correr1.png'), self.tamanho_imagem),
@@ -66,14 +61,14 @@ class Player:
             self.image = self.atacando[self.ataque_index]
             self.ataque_index += 1
             self.ataque_count += 1
-            self.ataquerect = pygame.Rect(self.x_player +150, 470, 200, 150)
+            self.ataquerect = pygame.Rect(self.x +150, 470, 200, 150)
 
             if self.ataque_index >= len(self.atacando):
                 self.ataque_index = 0
-                self.ataquerect = pygame.Rect(self.x_player +150, 700, 200, 150)
+                self.ataquerect = pygame.Rect(self.x +150, 700, 200, 150)
 
             if self.ataque_count >= 4:
-                self.ataquerect = pygame.Rect(self.x_player +150, 700, 200, 150)
+                self.ataquerect = pygame.Rect(self.x +150, 700, 200, 150)
                 self.ultimo_ataque = tempo_atual
                 self.ataque_count = 0
 
@@ -94,21 +89,21 @@ class Player:
     def atualiza_pulo(self):
         # Atualiza a física do pulo
         if self.pulando:
-            self.y_player += self.velocidade_pulo
+            self.y += self.velocidade_pulo
             self.rect.y += self.velocidade_pulo
             self.tempo_pulo += 1
             self.velocidade_pulo += self.gravity
 
             # Verifica se o pulo terminou (se o jogador voltou ao chão)
-            if self.y_player >= 235:
-                self.y_player = 235
+            if self.y >= 235:
+                self.y = 235
                 self.rect.y = 470
                 self.pulando = False
                 self.velocidade_pulo = self.AlturaPulo
                 self.tempo_pulo = self.tempopulo
 
     def draw(self):
-        self.tela.blit(self.image, (self.x_player, self.y_player))  # Desenha personagem
+        self.tela.blit(self.image, (self.x, self.y))  # Desenha personagem
         self.draw_cooldown_bar()  # Desenha Cooldown
 
     def draw_cooldown_bar(self):
@@ -119,10 +114,10 @@ class Player:
         barra_largura = (tempo_restante / self.cooldown_ataque) * self.barra_largura
 
         # Desenha a barra de fundo
-        pygame.draw.rect(self.tela, self.barra_fundo_cor, (self.x_player * 5, self.y_player - (-200), self.barra_largura, self.barra_altura))
+        pygame.draw.rect(self.tela, self.barra_fundo_cor, (self.x * 5, self.y - (-200), self.barra_largura, self.barra_altura))
 
         # Desenha a barra de cooldown
-        pygame.draw.rect(self.tela, self.barra_cor, (self.x_player * 5, self.y_player - (-200), barra_largura, self.barra_altura))
+        pygame.draw.rect(self.tela, self.barra_cor, (self.x * 5, self.y - (-200), barra_largura, self.barra_altura))
 
     def checar_colisao(self, objeto):
         return self.rect.colliderect(objeto.rect)

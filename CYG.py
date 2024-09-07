@@ -8,6 +8,8 @@ import classes.nuvem as nu
 import classes.tumulos as tu
 import classes.fantasma as fa
 import classes.moita as mo
+from classes.player import Player
+from classes.fantasma import Fantasma
 
 pygame.init() 
 
@@ -71,7 +73,7 @@ while running:
     
     if jogador.checar_colisaoataque(moita):
         moita.bushLarge_x = 1290
-        jogador.ataquerect = pygame.Rect(jogador.x_player +150, 700, 200, 150)
+        jogador.ataquerect = pygame.Rect(jogador.x +150, 700, 200, 150)
         fantasma.velocidade = 3
     if jogador.checar_colisao(moita):
         fantasma.velocidade = 0.5
@@ -86,7 +88,7 @@ while running:
         execucacao = False
 
         if pygame.key.get_pressed()[pygame.K_r]:
-            fantasma.x_Fantasma = 1000
+            fantasma.x = 1000
             mundo.velocidade = 12
             fantasma.velocidade = 0.5
             nuvem.velocidade = 3

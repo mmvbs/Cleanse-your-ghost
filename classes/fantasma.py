@@ -1,3 +1,4 @@
+from classes.entidade import Entidade
 import pygame
 import os
 
@@ -5,18 +6,12 @@ def carregar_imagem(path, tamanho):
     image = pygame.image.load(path)
     return pygame.transform.scale(image, tamanho)
 
-class Fantasma:
+class Fantasma(Entidade):
     def __init__(self, largura, altura, tela):
-        self.largura = largura
-        self.altura = altura
-        self.tela = tela
-        self.x_Fantasma = 1000
-        self.y_Fantasma = 530
-        self.aceleracao_gravidade = 1
-        self.tamanho_imagem = (135, 87)
-        self.velocidade = 0.5
-        self.rect = pygame.Rect(self.x_Fantasma, 530, 70, 87)
+        super().__init__(largura, altura, tela, 1000, 530, 0.5, 1)
         
+        self.tamanho_imagem = (135, 87)
+        self.rect = pygame.Rect(self.x, 530, 70, 87)
         
         self.imagens = [
             carregar_imagem(os.path.join('texturas', 'fantasma1.png'), self.tamanho_imagem),
@@ -34,16 +29,16 @@ class Fantasma:
 
         sprite_path = os.path.join(base_path, "fantasma1.png")
         self.fantasma = pygame.image.load(sprite_path)
-        self.fantasma = pygame.transform.scale(self.fantasma, (self.x_Fantasma, self.y_Fantasma))
+        self.fantasma = pygame.transform.scale(self.fantasma, (self.x, self.y))
     
     def draw(self):
-        self.tela.blit(self.image, (self.x_Fantasma, self.y_Fantasma))
+        self.tela.blit(self.image, (self.x, self.y))
 
     def update(self):
         # Atualiza a animação
         self.step_index = (self.step_index + 1) % (len(self.imagens) * 5)
         self.image = self.imagens[self.step_index // 5]
-        self.x_Fantasma -= self.velocidade
-        self.rect.topleft = (self.x_Fantasma+50, 530)
+        self.x -= self.velocidade
+        self.rect.topleft = (self.x+50, 530)
 
   
