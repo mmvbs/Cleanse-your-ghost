@@ -68,7 +68,7 @@ while running:
     jogador.run()
     
     if jogador.checar_colisaoataque(moita):
-        moita.bushLarge_x = 1290
+        moita.x = 1290
         jogador.ataquerect = pygame.Rect(jogador.x +150, 700, 200, 150)
         fantasma.velocidade = 3
     if jogador.checar_colisao(moita):
