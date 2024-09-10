@@ -5,11 +5,11 @@ import random
 import classes.player as pl
 import classes.mundo as mu
 import classes.nuvem as nu
-import classes.tumulos as tu
 import classes.fantasma as fa
-import classes.moita as mo
 from classes.player import Player
 from classes.fantasma import Fantasma
+from classes.obstaculos import Obstaculo
+
 
 pygame.init() 
 
@@ -27,10 +27,8 @@ mundo = mu.Mundo(largura, altura, tela)
 mundo.load_images()
 nuvem = nu.Nuvem(largura, altura, tela)
 nuvem.load_images()
-tumulo = tu.Tumulos(largura, altura, tela)
-tumulo.load_images()
-moita = mo.Moita(largura, altura, tela)
-moita.load_images()
+tumulo = Obstaculo(largura, altura, tela, 900, 480, 12, "stone-1.png", (100, 140))
+moita = Obstaculo(largura, altura, tela, 400, 500, 12, "bush-large.png", (152, 130))
 fantasma = fa.Fantasma(largura, altura, tela)
 
 #fantasma.load_images()
@@ -42,10 +40,8 @@ def iniciar():
     mundo.load_images()
     nuvem = nu.Nuvem(largura, altura, tela)
     nuvem.load_images()
-    tumulo = tu.Tumulos(largura, altura, tela)
-    tumulo.load_images()
-    moita = mo.Moita(largura, altura, tela)
-    moita.load_images()
+    tumulo = Obstaculo(largura, altura, tela, 900, 480, 12, "stone-1.png", (100, 140))
+    moita = Obstaculo(largura, altura, tela, 400, 500, 12, "bush-large.png", (152, 130))
     fantasma = fa.Fantasma(largura, altura, tela)
 # Loop principal do jogo
 running = True
