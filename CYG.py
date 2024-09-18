@@ -3,12 +3,11 @@ import sys
 import os
 import random
 import classes.player as pl
-import classes.mundo as mu
-import classes.nuvem as nu
 import classes.fantasma as fa
 from classes.player import Player
 from classes.fantasma import Fantasma
 from classes.obstaculos import Obstaculo
+from classes.cenario import Mundo, Nuvem
 
 
 pygame.init() 
@@ -23,10 +22,10 @@ pygame.display.set_caption("Cleanse your Ghost")
 # Instancias
 jogador = pl.Player(largura, altura, tela)
 jogador.load_images()
-mundo = mu.Mundo(largura, altura, tela)
-mundo.load_images()
-nuvem = nu.Nuvem(largura, altura, tela)
-nuvem.load_images()
+mundo = Mundo(largura, altura, tela)
+mundo.load_images("bg.png", (1280,500))
+nuvem = Nuvem(largura, altura, tela)
+nuvem.load_images("nuvem.png", (630,100))
 tumulo = Obstaculo(largura, altura, tela, 900, 480, 12, "stone-1.png", (100, 140))
 moita = Obstaculo(largura, altura, tela, 400, 500, 12, "bush-large.png", (152, 130))
 fantasma = fa.Fantasma(largura, altura, tela)
@@ -36,10 +35,10 @@ def iniciar():
     global jogador, tumulo, fantasma, mundo, nuvem, moita
     jogador = pl.Player(largura, altura, tela)
     jogador.load_images()
-    mundo = mu.Mundo(largura, altura, tela)
-    mundo.load_images()
-    nuvem = nu.Nuvem(largura, altura, tela)
-    nuvem.load_images()
+    mundo = Mundo(largura, altura, tela)
+    mundo.load_images("bg.png", (1280,500))
+    nuvem = Nuvem(largura, altura, tela)
+    nuvem.load_images("nuvem.png", (630,100))
     tumulo = Obstaculo(largura, altura, tela, 900, 480, 12, "stone-1.png", (100, 140))
     moita = Obstaculo(largura, altura, tela, 400, 500, 12, "bush-large.png", (152, 130))
     fantasma = fa.Fantasma(largura, altura, tela)
