@@ -107,3 +107,9 @@ class Player(Entidade):
         pygame.draw.rect(self.tela, self.barra_cor, (self.x * 5, self.y - (-200), barra_largura, self.barra_altura))
     def checar_colisaoataque(self, objeto):
         return self.ataquerect.colliderect(objeto.rect)
+    def load_images(self):
+            base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'texturas'))
+            sprite_path = os.path.join(base_path, "ocultie1.png")
+            self.player_image = carregar_imagem(sprite_path, self.tamanho_imagem)
+            player_down_path = os.path.join(base_path, "ocultiedown.png")
+            self.player_down_image = carregar_imagem(player_down_path, self.tamanho_imagem)
