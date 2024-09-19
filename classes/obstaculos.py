@@ -27,10 +27,4 @@ class Obstaculo:
             self.x = self.largura
         self.rect.topleft = (self.x, self.y)
 
-class Moita(Obstaculo):
-    def __init__(self, largura, altura, tela):
-        super().__init__(largura, altura, tela, 400, 500, 12, "bush-large.png", (152, 130))
 
-class Tumulos(Obstaculo):
-    def __init__(self, largura, altura, tela):
-        super().__init__(largura, altura, tela, 900, 480, 12, "stone-1.png", (100, 140))

@@ -116,11 +116,11 @@ while running:
             execucacao = True
             iniciar()
     
-    pygame.draw.rect(tela, (255, 0, 0), jogador.rect, 2)
-    pygame.draw.rect(tela, (255, 0, 0), tumulo.rect, 2) 
-    pygame.draw.rect(tela, (255, 0, 0), fantasma.rect, 2)
-    pygame.draw.rect(tela, (255, 0, 0), moita.rect, 2)
-    pygame.draw.rect(tela, (255, 0, 0), jogador.ataquerect, 2)
+    # pygame.draw.rect(tela, (255, 0, 0), jogador.rect, 2)
+    # pygame.draw.rect(tela, (255, 0, 0), tumulo.rect, 2) 
+    # pygame.draw.rect(tela, (255, 0, 0), fantasma.rect, 2)
+    # pygame.draw.rect(tela, (255, 0, 0), moita.rect, 2)
+    # pygame.draw.rect(tela, (255, 0, 0), jogador.ataquerect, 2)
     
 
     if pygame.key.get_pressed()[pygame.K_j]:
