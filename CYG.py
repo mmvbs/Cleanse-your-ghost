@@ -71,7 +71,7 @@ while running:
     
     if jogador.checar_colisaoataque(moita):
         moita.bushLarge_x = 1290
-        jogador.ataquerect = pygame.Rect(jogador.x_player +150, 700, 200, 150)
+        jogador.ataquerect = pygame.Rect(jogador.x +150, 700, 200, 150)
         fantasma.velocidade = 3
     if jogador.checar_colisao(moita):
         fantasma.velocidade = 0.5
@@ -116,11 +116,11 @@ while running:
             execucacao = True
             iniciar()
     
-    #pygame.draw.rect(tela, (255, 0, 0), jogador.rect, 2)
-    #pygame.draw.rect(tela, (255, 0, 0), tumulo.rect, 2) 
-    #pygame.draw.rect(tela, (255, 0, 0), fantasma.rect, 2)
-    #pygame.draw.rect(tela, (255, 0, 0), moita.rect, 2)
-    #pygame.draw.rect(tela, (255, 0, 0), jogador.ataquerect, 2)
+    pygame.draw.rect(tela, (255, 0, 0), jogador.rect, 2)
+    pygame.draw.rect(tela, (255, 0, 0), tumulo.rect, 2) 
+    pygame.draw.rect(tela, (255, 0, 0), fantasma.rect, 2)
+    pygame.draw.rect(tela, (255, 0, 0), moita.rect, 2)
+    pygame.draw.rect(tela, (255, 0, 0), jogador.ataquerect, 2)
     
 
     if pygame.key.get_pressed()[pygame.K_j]:
